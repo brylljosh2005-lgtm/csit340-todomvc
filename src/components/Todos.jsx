@@ -29,6 +29,12 @@ function Todos() {
   // A: Items left counter
   const itemsLeft = todos.filter((todo) => !todo.completed).length
 
+  // B: Clear completed todos
+  function handleClearCompleted() {
+    setTodos(todos.filter((todo) => !todo.completed))
+  }
+  const hasCompleted = todos.some((todo) => todo.completed)
+
   return (
     <section className="mx-auto max-w-[550px]">
       <h1 className="text-center text-[80px] font-extralight text-[#b83f45]">
@@ -83,6 +89,19 @@ function Todos() {
             <span>
               <strong className="font-light">{itemsLeft}</strong> {itemsLeft === 1 ? 'item left' : 'items left'}
             </span>
+
+            {/* Empty center column to keep grid spacing correct */}
+            <div></div>
+
+            {hasCompleted && (
+              <button
+                type="button"
+                onClick={handleClearCompleted}
+                className="cursor-pointer justify-self-end hover:underline"
+              >
+                Clear completed
+              </button>
+            )}
           </footer>
         )}
       </div>
