@@ -27,16 +27,16 @@ function Todos() {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
-  // A: Items left counter
+  // Items left counter
   const itemsLeft = todos.filter((todo) => !todo.completed).length
 
-  // B: Clear completed todos
+  // Clear completed todos
   function handleClearCompleted() {
     setTodos(todos.filter((todo) => !todo.completed))
   }
   const hasCompleted = todos.some((todo) => todo.completed)
 
-  // C: Toggle all todos
+  // Toggle all todos
   const allCompleted = todos.length > 0 && todos.every((todo) => todo.completed)
 
   function handleToggleAll() {
@@ -44,7 +44,7 @@ function Todos() {
     setTodos(todos.map((todo) => ({ ...todo, completed: newState })))
   }
 
-  // D: Filtered todos
+  // Filtered todos
   const filteredTodos = todos.filter((todo) => {
     if (filter === 'active') return !todo.completed
     if (filter === 'completed') return todo.completed
